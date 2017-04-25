@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../model/User';
 @Component({
-  moduleId: module.id,  
+  moduleId: module.id,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -13,7 +13,6 @@ currentUser: User;
 
   ngOnInit() {
   }
-
 }
 // constructor(private userService: UserService) {
 //         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
