@@ -1,0 +1,42 @@
+<!--<div *ngIf="dailyStatus | async">-->
+<table class="table table-bordered" *ngFor="let todayStatus of dailyStatus | async">
+    <!--Today's Date : {{todayStatus.StatusDate}}-->
+    <tr>
+        <td>Employee Name</td>
+        <td>Project Name</td>
+        <td>Work Item number</td>
+        <td>Description</td>
+        <td>Blockers \ Action</td>
+        <td>Learnings</td>
+    </tr>
+    <tbody *ngFor="let update of todayStatus.PersonalDetails">
+        <tr>
+            <td>
+                {{update.Name }}
+            </td>
+            <td colspan="5">
+                &nbsp;
+            </td>
+        </tr>
+        <tr *ngFor="let status of update.Status">
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                {{status.ProjectName}}
+            </td>
+            <td>
+                {{status.WorkItem}}
+            </td>
+            <td>
+                {{status.Description}}
+            </td>
+            <td>
+                {{status.BlockerAction}}
+            </td>
+            <td>
+                {{status.Learnings}}
+            </td>
+        </tr>
+    </tbody>
+</table>

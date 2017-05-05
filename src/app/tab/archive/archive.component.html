@@ -1,0 +1,9 @@
+<div *ngIf="showDates">
+    <div *ngFor="let status of allStatus | async ">
+        <a [routerLink]="['/archives/' + status.StatusDate.replace('/','-').replace('/','-')]" (click)="showDates = false">{{status.StatusDate}}</a>
+    </div>
+</div>
+<div>
+    <router-outlet></router-outlet>
+    <a [routerLink]="['/archives']" (click)="showDates = true" *ngIf="!showDates">back</a>
+</div>

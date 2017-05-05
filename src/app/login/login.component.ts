@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'app/service/authentication.service';
-@Component({  
+@Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -15,9 +15,7 @@ model: any = {};
         private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-        // reset login status
-        this.authenticationService.logout();  
-        // get return url from route parameters or default to '/'
+        this.authenticationService.logout();
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
@@ -30,6 +28,7 @@ model: any = {};
                 },
                 error => {
                     this.loading = false;
+                    console.log(error);
                 });
      }
 }

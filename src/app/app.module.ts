@@ -3,19 +3,27 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { AuthenticationService } from './service/authentication.service';
+import { HttpClient } from './service/httpClient';
+import { StatusService } from './service/status.service';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guard/auth.guard';
+import { MyStatusComponent } from './tab/my-status/my-status.component';
+import { DailyStatusComponent } from './tab/daily-status/daily-status.component';
+import { ArchiveComponent } from './tab/archive/archive.component';
+import { routing } from './app.routing';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    MyStatusComponent,
+    DailyStatusComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +31,7 @@ import { AuthGuard } from './guard/auth.guard';
     HttpModule,
     routing
   ],
-  providers: [AuthGuard, AuthenticationService],
+  providers: [AuthGuard, AuthenticationService , StatusService , HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

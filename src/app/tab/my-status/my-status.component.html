@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-offset-4">
+        <h3>
+            Update the status of Today ({{ date | date:'d/M/yy' }})
+        </h3>
+    </div>
+</div>
+<div>
+    <table class="table" style="margin: 20px">
+        <thead>
+            <tr>
+                <td>Project Name</td>
+                <td>Work Item number</td>
+                <td>Description</td>
+                <td>Blockers \ Action</td>
+                <td>Learnings</td>
+                <td>&nbsp;</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let update of updates">
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="update.ProjectName" name="" placeholder="Enter Project Name">
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="update.WorkItem" name="" placeholder="Enter work item number">
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="update.Description" name="" placeholder="Enter Description">
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="update.BlockerAction" name="" placeholder="Enter Description">
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="update.Learnings" name="" placeholder="Enter Description">
+                </td>
+                <td>
+                    <button class="btn btn-primary" (click)="removeChoice(update.id)">-</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="add" style="float:right;margin: 10px" class="btn btn-primary" (click)="addChoice()">Add New row</button>
+</div>
+<button class="add" style="float:right; margin: 10px" class="btn btn-primary" (click)="udpateStatus()">Update Status</button>
+<br>
+<div class="row">
+    <div class="col-md-offset-4">
+        <h3>
+            {{StatusMessage}}
+        </h3>
+    </div>
+</div>

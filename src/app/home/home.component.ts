@@ -8,23 +8,32 @@ import { User } from '../model/User';
 })
 export class HomeComponent implements OnInit {
 currentUser: User;
+tabs: any;
     users: User[] = [];
-  constructor() { }
+  constructor() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.currentUser);
+    this.tabs = [{
+        active: true,
+        link: '/myStatus',
+        title: 'My Status'
+    },
+    {
+        active: false,
+        link: '/dailyStatus',
+        title: 'Daily Status'
+    },
+    {
+        active: false,
+        link: '/archives',
+        title: 'Archives'
+    }];
+   }
+   selectTab(tab: any) {
+    this.tabs.forEach(t => t.active = false);
+    tab.active = true;
+  }
 
   ngOnInit() {
   }
 }
-// constructor(private userService: UserService) {
-//         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-//     }
-// ngOnInit() {
-//     this.loadAllUsers();
-// }
-
-// deleteUser(id: number) {
-//     this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-// }
-
-// private loadAllUsers() {
-//     this.userService.getAll().subscribe(users => { this.users = users; });
-// }

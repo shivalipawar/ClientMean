@@ -10,18 +10,18 @@ export class AuthenticationService {
     login(username: string, password: string) {
         return this.http.post('http://localhost:3000/login', { username: username, password: password })
             .map((response: Response) => {
-                // login successful if there's a jwt token in the response
                 // tslint:disable-next-line:prefer-const
                 let user = response.json();
                 if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    console.log(user);
+                    localStorage.setItem('token', user.token);
+                    localStorage.setItem('currentUser', JSON.stringify(user.user[0]));
                 }
             });
     }
 
     logout() {
-        // remove user from local storage to log user out
+        localStorage.removeItem('token');
         localStorage.removeItem('currentUser');
     }
 }
