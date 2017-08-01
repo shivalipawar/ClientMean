@@ -4,7 +4,7 @@ import { StatusService } from 'app/service/status.service';
 @Component({
   selector: 'app-my-status',
   templateUrl: './my-status.component.html',
-  styleUrls: ['./my-status.component.css']
+  styleUrls: ['./my-status.component.sass']
 })
 export class MyStatusComponent implements OnInit {
 updates: any = [];

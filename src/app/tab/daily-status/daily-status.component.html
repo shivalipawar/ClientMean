@@ -1,14 +1,19 @@
-<!--<div *ngIf="dailyStatus | async">-->
-<table class="table table-bordered" *ngFor="let todayStatus of dailyStatus | async">
-    <!--Today's Date : {{todayStatus.StatusDate}}-->
-    <tr>
-        <td>Employee Name</td>
-        <td>Project Name</td>
-        <td>Work Item number</td>
-        <td>Description</td>
-        <td>Blockers \ Action</td>
-        <td>Learnings</td>
-    </tr>
+<div class="row">
+        <div colspan="6" style="text-align: center">
+            <h5>Status of Date : ({{ date | date:'d/M/yy' }})</h5>
+        </div>
+</div>
+<table style="margin: 10px" id="myTable" data-toggle="table" class="table table-bordered table-hover table-striped table condensed table-responsive" *ngFor="let todayStatus of dailyStatus | async">
+    <thead>
+        <tr>
+            <th data-field="emp-name" data-sortable="true">Employee Name</th>
+            <th data-field="proj-name" data-sortable="true">Project Name</th>
+            <td>Work Item number</td>
+            <td>Description</td>
+            <td>Blockers \ Action</td>
+            <td>Learnings</td>
+        </tr>
+    </thead>
     <tbody *ngFor="let update of todayStatus.PersonalDetails">
         <tr>
             <td>
@@ -40,3 +45,4 @@
         </tr>
     </tbody>
 </table>
+<div *ngIf="(dailyStatus | async)?.length==0">No records found.</div>

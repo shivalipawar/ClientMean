@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-daily-status',
   templateUrl: './daily-status.component.html',
-  styleUrls: ['./daily-status.component.css']
+  styleUrls: ['./daily-status.component.sass']
 })
 export class DailyStatusComponent implements OnInit, OnDestroy  {
   dailyStatus:  Observable<any>;

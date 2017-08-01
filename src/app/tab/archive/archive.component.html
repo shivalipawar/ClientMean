@@ -1,9 +1,42 @@
-<div *ngIf="showDates">
-    <div *ngFor="let status of allStatus | async ">
-        <a [routerLink]="['/archives/' + status.StatusDate.replace('/','-').replace('/','-')]" (click)="showDates = false">{{status.StatusDate}}</a>
+<div *ngIf="showDates" class="row">
+    <div class="row" style="margin:10px">
+        <div class="col-md-4">
+            <h4>Please select Custom date
+            </h4>
+        </div>
+        <div class="col-md-4">
+            <!--input type="date" class="form-control" [(ngModel)]="customDate" name=" " placeholder="Enter work item number "-->
+            <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar" id="calimage"></span>
+                    </span>
+            </div>
+            <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+                    $("#calimage").click(function(){
+                        $('#datetimepicker1').datetimepicker("show");
+                    })
+            });
+            </script>
+        </div>
+        <div class="col-md-4 ">
+            <button class="btn btn-default" [routerLink]="[ '/archives/' + customDate] " (click)="showDates= false ">Get Status</button>
+        </div>
+    </div>
+    <div class="row " style="margin:10px ">
+        <div class="col-md-4 ">
+            <h4>Status of last 10 days</h4>
+        </div>
+        <div class="col-md-8 ">
+            <span *ngFor="let status of allStatus | async ">
+                 <a [routerLink]="[ '/archives/' + status.StatusDate.replace( '/', '-').replace( '/', '-')] " (click)="showDates= false ">{{status.StatusDate}}</a>
+            </span>
+        </div>
     </div>
 </div>
 <div>
     <router-outlet></router-outlet>
-    <a [routerLink]="['/archives']" (click)="showDates = true" *ngIf="!showDates">back</a>
+    <a [routerLink]="[ '/archives'] " (click)="showDates= true " *ngIf="!showDates ">back</a>
 </div>

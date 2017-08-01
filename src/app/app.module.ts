@@ -14,6 +14,8 @@ import { MyStatusComponent } from './tab/my-status/my-status.component';
 import { DailyStatusComponent } from './tab/daily-status/daily-status.component';
 import { ArchiveComponent } from './tab/archive/archive.component';
 import { routing } from './app.routing';
+import { DetailsComponent } from './tab/details/details.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { routing } from './app.routing';
     HomeComponent,
     MyStatusComponent,
     DailyStatusComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    DetailsComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

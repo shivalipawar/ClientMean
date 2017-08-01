@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Abel/Abel-Regular.eot);
+  src: local('Abel Regular'), local('Abel-Regular'), local('Abel'), url(../fonts/Abel/Abel-Regular.ttf) format('truetype'), url(../fonts/Abel/Abel-Regular.woff) format('woff'), url(../fonts/Abel/Abel-Regular.eot?#iefix) format('embedded-opentype'), url(../fonts/Abel/Abel-Regular.svg#Abel) format('svg'), url(../fonts/Abel/Abel-Regular.woff2) format('woff2');
+}
+
