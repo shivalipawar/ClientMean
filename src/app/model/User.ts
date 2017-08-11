@@ -4,4 +4,7 @@ export class User {
     password: string;
     firstName: string;
     lastName: string;
+    securityQues : string;
+    securityAns :string;
+    email :string;
 }

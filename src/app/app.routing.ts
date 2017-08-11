@@ -19,7 +19,7 @@ const appRoutes: Routes = [
         { path: ':d',  component: DailyStatusComponent},
     ]}
     ]},
-    { path: 'login', component: LoginComponent, children: [{ path: 'register', component: RegisterComponent }, ]},
+    { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent, },
     { path: '**', redirectTo: '' }
 ];

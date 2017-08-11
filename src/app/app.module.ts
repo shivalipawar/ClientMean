@@ -17,7 +17,6 @@ import { routing } from './app.routing';
 import { DetailsComponent } from './tab/details/details.component';
 import { RegisterComponent } from './register/register.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -6,6 +6,8 @@ import { StatusService } from 'app/service/status.service';
 @Component({
   selector: 'app-archive',
   templateUrl: './archive.component.html',
+
+  
   styleUrls: ['./archive.component.sass']
 })
 export class ArchiveComponent implements OnInit {

@@ -1,35 +1,63 @@
 <div class="col-md-6 col-md-offset-3">
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
         <h2>Register</h2>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
             <span class="glyphicon glyphicon-user"></span>
             <label for="username">Name</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
-        </div>
-         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <input type="text" class="form-control" name="username"[(ngModel)]="model.username" #username="ngModel" required minlength="5" maxlength="30" />
+            <div *ngIf="(f.submitted && !username.valid )|| username.dirty && username.errors" class="alert alert-danger">
+                <div [hidden]=!username.errors.minlength>
+                    Username should be have minimum 5 characters.
+                </div>
+                <div [hidden]=!username.errors.required>
+                    Username is required.
+                </div>
+            </div>
+         </div> 
+         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !id.valid }">
             <span class="glyphicon glyphicon-edit"></span>
-            <label for="password">Employee Id</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            <label for="id">Employee Id</label>
+            <input type="aplhanumeric" class="form-control" name="id" [(ngModel)]="model.id" #id="ngModel" required minlength="6" maxlength="10"/>
+            <div *ngIf="f.submitted && !id.valid" class="help-block">ID is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
             <span class="glyphicon glyphicon-lock"></span>
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required minlength="5" maxlength="10" />
+            <div *ngIf="(f.submitted && !password.valid) || password.dirty && password.errors" class="alert alert-danger">
+                <div [hidden]=!password.errors.minlength>
+                    Password should be have minimum 5 characters.
+                </div>
+                <div [hidden]=!password.errors.required>
+                    Password is required
+                </div>
+            </div>
         </div>
-         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !confirmpassword.valid }">
             <span class="glyphicon glyphicon-lock"></span>
-            <label for="password">Confirm Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            <label for="confirmpassword">Confirm Password</label>
+            <input type="password" class="form-control" name="confirmpassword" [(ngModel)]="model.password" #confirmpassword="ngModel" required minlength="6" maxlength="10"/>
+            <div *ngIf="(f.submitted && !confirmpassword.valid) || confirmpassword.errors && confirmpassword.dirty " class="alert alert-danger">
+                <div [hidden]=!confirmpassword.errors.minlength>
+                    Password should be have minimum 5 characters.
+                </div>
+                <div [hidden]=!confirmpassword.errors.required>
+                    Password is required
+                </div>
+            </div>
         </div>
-         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
             <span class="glyphicon glyphicon-envelope"></span>
             <label for="password">Email ID</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            <input type="email" class="form-control" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+            <div *ngIf="(f.submitted && !email.valid) || email.dirty && email.errors" class="alert alert-danger">
+              <div [hidden]=!email.errors.required>
+                    Email is required.
+                </div>
+                <div [hidden]=!email.errors.pattern>
+                    Email is invalid
+                </div>  
+            </div>
         </div>
         <div class="dropdown">
             <span class="glyphicon glyphicon-question-sign"></span>
@@ -50,7 +78,7 @@
         </div>
         <div class="row">
             <div  class="col-md-6">
-                <a [routerLink]="['/login']"><button id="registerB" class="btn btn-default btn-md">Register</button></a>
+                <a [routerLink]="['/login']"><button id="registerB" class="btn btn-default btn-md" [disabled]="!f.form.valid" >Register</button></a>
             </div>
             <div class="col-md-6">
                 <a [routerLink]="['/login']"><button id="cancelB" class="btn btn-default btn-md" >Cancel</button></a>

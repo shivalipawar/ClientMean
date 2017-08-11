@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row" *ngFor="let todayStatus of dailyStatus | async">
         <div colspan="6" style="text-align: center">
-            <h5>Status of Date : ({{ date | date:'d/M/yy' }})</h5>
+            <h5>Status of Date : ({{todayStatus.StatusDate }})</h5>
         </div>
-</div>
-<table style="margin: 10px" id="myTable" data-toggle="table" class="table table-bordered table-hover table-striped table condensed table-responsive" *ngFor="let todayStatus of dailyStatus | async">
+
+<table style="margin: 10px" id="myTable" data-toggle="table" class="table table-bordered table-hover table-striped table condensed table-responsive" >
     <thead>
         <tr>
             <th data-field="emp-name" data-sortable="true">Employee Name</th>
@@ -45,4 +45,5 @@
         </tr>
     </tbody>
 </table>
+</div>
 <div *ngIf="(dailyStatus | async)?.length==0">No records found.</div>
