@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthenticationService } from './service/authentication.service';
 import { HttpClient } from './service/httpClient';
 import { StatusService } from './service/status.service';
+import { RegistrationService } from "./service/registration.service";
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guard/auth.guard';
@@ -34,7 +35,7 @@ import { RegisterComponent } from './register/register.component';
     HttpModule,
     routing
   ],
-  providers: [AuthGuard, AuthenticationService , StatusService , HttpClient],
+  providers: [AuthGuard, AuthenticationService , StatusService , HttpClient , RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

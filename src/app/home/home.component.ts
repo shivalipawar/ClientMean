@@ -12,7 +12,7 @@ currentUser: User;
 tabs: any;
     users: User[] = [];
   constructor( private router: Router) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
     console.log(this.currentUser);
     this.tabs = [{
         active: true,

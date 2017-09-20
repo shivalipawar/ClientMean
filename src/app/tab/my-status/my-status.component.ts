@@ -12,7 +12,7 @@ counter = 0;
 onLeave = false;
 date = new Date();
 StatusMessage = '';
-user = JSON.parse(localStorage.getItem('currentUser'));
+user = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
   constructor(private statusService: StatusService) {
      this.statusService.getByDateUser(Date.now(), 'E0398451').subscribe((data) => {
         this.updates = data.Status;
